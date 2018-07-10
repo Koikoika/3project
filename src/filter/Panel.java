@@ -136,14 +136,14 @@
 					capture.read(webcam_image);  
 					if( !webcam_image.empty() )  
 					{  
-						//元々0.3で、0.7で大体画面いっぱい
-						Imgproc.resize(webcam_image, webcam_image, new Size(webcam_image.size().width*0.7,webcam_image.size().height*0.7));
+						//元々0.3で、0.6で大体画面いっぱい
+						Imgproc.resize(webcam_image, webcam_image, new Size(webcam_image.size().width*0.6,webcam_image.size().height*0.6));
 						frame.setSize(webcam_image.width()+40,webcam_image.height()+60); 
 						/*登録用中央に赤い四角を表示する。以下3行の座標はのちに反転されるため右上が(0,0)*/
-						//四角の中心(635,375)
-						Imgproc.rectangle(webcam_image,new Point(375, 75),new Point(975, 675),new Scalar(0, 0, 225),8,8,0);
-						Imgproc.line(webcam_image,new Point(675, 75),new Point(675, 675),new Scalar(0, 0, 225));
-						Imgproc.line(webcam_image,new Point(375, 375),new Point(975, 375),new Scalar(0, 0, 225));
+						//四角の中心(575,325)
+						Imgproc.rectangle(webcam_image,new Point(325, 75),new Point(825, 575),new Scalar(0, 0, 225),8,8,0);
+						Imgproc.line(webcam_image,new Point(575, 75),new Point(575, 575),new Scalar(0, 0, 225));//縦
+						Imgproc.line(webcam_image,new Point(325, 325),new Point(825, 325),new Scalar(0, 0, 225));//横
 						/*ここまでが四角描写なので登録時以外は消す*/
 						img=matToBufferedImage(webcam_image); 
 						imgRev = createMirrorImage(img);//matからイメージに変換してから反転させる
